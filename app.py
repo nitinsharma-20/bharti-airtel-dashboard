@@ -29,15 +29,14 @@ c4.metric("Predicted", f"₹{pred:.2f}")
 fig = go.Figure()
 fig.add_trace(go.Scatter(x=df["Date"], y=df["Close"], name="Close", line=dict(color="red")))
 fig.add_trace(go.Scatter(x=df["Date"], y=df["MA20"], name="20 MA", line=dict(color="orange")))
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig, use_container_width=True, key="price_chart")
 
 vol = go.Figure(go.Bar(x=df["Date"], y=df["Volume"], marker_color="teal"))
-st.plotly_chart(vol, use_container_width=True)
+st.plotly_chart(vol, use_container_width=True, key="volume_chart")
+
 
 st.subheader("Recent Data")
 st.dataframe(df.tail(20), use_container_width=True)
 
 
-vol = go.Figure(go.Bar(x=df.Date, y=df.Volume, marker_color="teal"))
-st.plotly_chart(vol, use_container_width=True)
-st.dataframe(df.tail(20), use_container_width=True)
+
